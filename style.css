@@ -120,6 +120,32 @@ footer {
     margin-top: 20px;
 }
 
+.language-switcher button.active {
+    background: #fff;
+    color: #e8491d;
+    font-weight: bold;
+}
+
+/* Styles for definition lists */
+dl {
+    padding: 0;
+    margin: 10px 0;
+}
+
+dt {
+    font-weight: bold;
+    color: #35424a;
+    margin-top: 10px;
+}
+
+dd {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #e8491d;
+}
+
+
 /* Responsive Design */
 @media(max-width: 768px) {
     header h1 {

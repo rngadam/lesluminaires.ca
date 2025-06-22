@@ -1,64 +1,57 @@
 document.addEventListener('DOMContentLoaded', () => {
     const langFrButton = document.getElementById('lang-fr');
     const langEnButton = document.getElementById('lang-en');
-    let currentLang = 'fr'; // Default language
+    const elementsToTranslate = document.querySelectorAll('[data-lang-fr][data-lang-en]');
 
-    const elementsToTranslate = document.querySelectorAll('[data-lang-fr], [data-lang-en]');
-
-    function translatePage(lang) {
-        currentLang = lang;
+    function setLanguage(lang) {
         elementsToTranslate.forEach(el => {
-            const text = el.getAttribute(`data-lang-${lang}`);
-            if (text) {
-                // For elements like <strong> inside a translatable element,
-                // we need to preserve their HTML structure.
-                if (el.children.length > 0 && el.getAttribute(`data-lang-${lang}-html`)) {
-                     el.innerHTML = el.getAttribute(`data-lang-${lang}-html`);
-                } else if (el.children.length > 0 && el.querySelector('strong')) {
-                    // Attempt to preserve simple strong tags if no specific HTML is provided
-                    const strongTextFr = el.querySelector('strong')?.textContent;
-                    const strongTextEn = el.querySelector('strong')?.textContent; // This might need better handling for actual translation of strong content
+            // If the element is a link within the #nearby-places or #attractions list, preserve its href and target
+            let preserveLink = false;
+            let href, target;
+            if (el.tagName === 'A' && (el.closest('#nearby-places ul') || el.closest('#attractions ul'))) {
+                preserveLink = true;
+                href = el.getAttribute('href');
+                target = el.getAttribute('target');
+            }
 
-                    if(strongTextFr && strongTextEn) {
-                        if (lang === 'fr') {
-                            el.innerHTML = el.getAttribute('data-lang-fr').replace(strongTextFr, `<strong>${strongTextFr}</strong>`);
-                        } else {
-                             el.innerHTML = el.getAttribute('data-lang-en').replace(strongTextEn, `<strong>${strongTextEn}</strong>`);
-                        }
-                    } else {
-                        el.textContent = text;
-                    }
-                }
-                else {
-                    el.textContent = text;
-                }
+            const translation = el.getAttribute(`data-lang-${lang}`);
+            if (translation) {
+                el.innerHTML = translation; // Use innerHTML to render potential <strong> tags from attributes
+            }
+
+            if (preserveLink && href && target) {
+                el.setAttribute('href', href);
+                el.setAttribute('target', target);
             }
         });
-        document.documentElement.lang = lang; // Update the lang attribute of the <html> tag
 
-        // Update button active states (optional)
-        if (lang === 'fr') {
-            langFrButton.classList.add('active');
-            langEnButton.classList.remove('active');
-        } else {
-            langEnButton.classList.add('active');
-            langFrButton.classList.remove('active');
-        }
+        document.documentElement.lang = lang;
+        langFrButton.classList.toggle('active', lang === 'fr');
+        langEnButton.classList.toggle('active', lang === 'en');
+
+        // Special handling for list items that contain <strong> tags in their data attributes
+        // This is because innerHTML will strip the <li> of its own data-lang attributes if we're not careful
+        const listItems = document.querySelectorAll('#technical li, #toponymy ul li');
+        listItems.forEach(li => {
+            const translation = li.getAttribute(`data-lang-${lang}`);
+            if (translation && translation.includes('<strong>')) {
+                 // Check if the direct child is a strong tag or if the translation itself needs to be set
+                if (li.children.length === 1 && li.children[0].tagName === 'STRONG') {
+                    // This case might be complex if the strong tag itself needs translation,
+                    // but for now, we assume the data-lang attribute on the <li> is the full translated string.
+                    li.innerHTML = translation;
+                } else if (!li.querySelector('strong')) { // only set if no strong tag is currently rendered
+                    li.innerHTML = translation;
+                }
+            } else if (translation) {
+                li.innerHTML = translation;
+            }
+        });
     }
 
-    langFrButton.addEventListener('click', () => translatePage('fr'));
-    langEnButton.addEventListener('click', () => translatePage('en'));
-
-    // Prepare HTML content for elements that contain other HTML tags like <strong>
-    // This is a workaround to properly set innerHTML for these cases.
-    elementsToTranslate.forEach(el => {
-        if (el.children.length > 0 && (el.getAttribute('data-lang-fr').includes('<strong>') || el.getAttribute('data-lang-en').includes('<strong>'))) {
-            el.setAttribute('data-lang-fr-html', el.getAttribute('data-lang-fr'));
-            el.setAttribute('data-lang-en-html', el.getAttribute('data-lang-en'));
-        }
-    });
-
+    langFrButton.addEventListener('click', () => setLanguage('fr'));
+    langEnButton.addEventListener('click', () => setLanguage('en'));
 
     // Initialize with the default language
-    translatePage(currentLang);
+    setLanguage('fr');
 });
