@@ -45,9 +45,9 @@ header p {
 }
 
 .language-switcher button {
-    background: #FFD700; /* Gold */
-    color: #2F4F4F; /* Dark Teal for text on gold button */
-    border: 1px solid #2F4F4F; /* Teal border */
+    background: #2F4F4F; /* Dark Teal background for inactive button */
+    color: #FFD700; /* Gold text for inactive button */
+    border: 1px solid #FFD700; /* Gold border for inactive button */
     padding: 5px 10px;
     cursor: pointer;
     font-size: 0.9rem;
@@ -55,9 +55,9 @@ header p {
 }
 
 .language-switcher button:hover {
-    background: #2F4F4F; /* Dark Teal */
-    color: #FFD700; /* Gold */
-    border: 1px solid #FFD700; /* Gold border */
+    background: #2A5B5A; /* Lighter Teal for hover on inactive */
+    color: #FFFFFF; /* White text for hover */
+    border: 1px solid #FFFFFF; /* White border for hover */
 }
 
 nav {
@@ -142,10 +142,10 @@ footer {
 }
 
 .language-switcher button.active {
-    background: #FFFFFF; /* White background for active button */
-    color: #2F4F4F; /* Dark Teal text */
+    background: #FFD700; /* Gold background for active button */
+    color: #2F4F4F; /* Dark Teal text for active button */
     font-weight: bold;
-    border: 1px solid #2F4F4F;
+    border: 1px solid #2F4F4F; /* Dark Teal border for active button */
 }
 
 /* Styles for definition lists */
