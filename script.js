@@ -58,4 +58,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize with the default language
     setLanguage('fr');
+
+    // Slideshow logic
+    let slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+    function currentDiv(n) { // Added for completeness, though not used by current buttons
+      showDivs(slideIndex = n);
+    }
+
+    function showDivs(n) {
+      let i;
+      const x = document.getElementsByClassName("mySlides");
+      // const dots = document.getElementsByClassName("demo"); // If using dots for navigation
+      if (n > x.length) {slideIndex = 1}
+      if (n < 1) {slideIndex = x.length}
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      // for (i = 0; i < dots.length; i++) { // If using dots for navigation
+      //   dots[i].className = dots[i].className.replace(" w3-white", "");
+      // }
+      if (x.length > 0) { // Check if slides exist
+          x[slideIndex-1].style.display = "block";
+        // if (dots.length > 0) { // If using dots for navigation
+        //  dots[slideIndex-1].className += " w3-white";
+        // }
+      }
+    }
+
+    // Make plusDivs globally accessible if it's called directly from HTML onclick
+    window.plusDivs = plusDivs;
+    window.currentDiv = currentDiv; // Also make currentDiv global if needed
+
 });
