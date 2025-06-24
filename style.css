@@ -167,8 +167,35 @@ dd {
 
 /* Responsive Design */
 @media(max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding-top: 0.5rem; /* Reduce padding a bit for stacked view */
+        padding-bottom: 0.5rem;
+    }
+
+    #header-logo {
+        margin-right: 0; /* Remove right margin when stacked */
+        margin-bottom: 10px; /* Add bottom margin when stacked */
+        max-height: 60px; /* Slightly smaller logo for mobile */
+    }
+
+    .header-content {
+        text-align: center; /* Ensure it's centered if flex-grow behaves differently */
+        margin-bottom: 10px; /* Space below title/subtitle block */
+    }
+
     header h1 {
-        font-size: 2rem;
+        font-size: 2rem; /* Already in existing query, kept for clarity */
+    }
+
+    header p {
+        font-size: 1rem; /* Slightly smaller subtitle for mobile */
+    }
+
+    .language-switcher {
+        text-align: center; /* Center buttons when stacked */
+        padding: 5px 0 0 0; /* Adjust padding for stacked layout */
+        width: 100%; /* Allow it to take full width for centering */
     }
 
     nav ul li {
