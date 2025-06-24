@@ -61,15 +61,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Slideshow logic
     let slideIndex = 1;
-    showDivs(slideIndex);
+    // showDivs is called after DOM is ready and buttons are available
 
     function plusDivs(n) {
       showDivs(slideIndex += n);
     }
 
-    function currentDiv(n) { // Added for completeness, though not used by current buttons
-      showDivs(slideIndex = n);
-    }
+    // Removed currentDiv function as it's not used
 
     function showDivs(n) {
       let i;
@@ -91,8 +89,21 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Make plusDivs globally accessible if it's called directly from HTML onclick
-    window.plusDivs = plusDivs;
-    window.currentDiv = currentDiv; // Also make currentDiv global if needed
+    // Event Listeners for slideshow buttons
+    const prevButton = document.getElementById('slideshow-prev');
+    const nextButton = document.getElementById('slideshow-next');
 
+    if (prevButton && nextButton) {
+        prevButton.addEventListener('click', () => plusDivs(-1));
+        nextButton.addEventListener('click', () => plusDivs(1));
+    }
+
+    // Always attempt to show the first slide if slides exist
+    // This ensures that if there are slides, the first one is displayed,
+    // regardless of whether the control buttons were found.
+    const slides = document.getElementsByClassName("mySlides");
+    if (slides.length > 0) {
+        showDivs(slideIndex);
+    }
+    // Removed global assignments for plusDivs and currentDiv
 });
