@@ -146,7 +146,7 @@ dd {
 }
 
 #image-gallery img {
-    width: 100%;
+    width: 75%;
     height: auto;
     display: block; /* To remove extra space below the image */
     margin-bottom: 20px; /* Optional: if you want some space below the image gallery */
