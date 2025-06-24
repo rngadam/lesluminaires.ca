@@ -10,9 +10,22 @@ body {
 header {
     background: #35424a;
     color: #ffffff;
-    padding: 1rem 0;
+    padding: 1rem 20px; /* Added padding for logo spacing */
     text-align: center;
     border-bottom: #e8491d 3px solid;
+    display: flex; /* For logo alignment */
+    align-items: center; /* Vertically align items */
+    justify-content: space-between; /* Space out logo, title/subtitle, lang-switcher */
+}
+
+#header-logo {
+    max-height: 70px; /* Adjust as needed */
+    margin-right: 20px;
+}
+
+.header-content { /* Wrapper for title and subtitle */
+    flex-grow: 1; /* Allows title block to take available space */
+    text-align: center; /* Keep title centered */
 }
 
 header h1 {
