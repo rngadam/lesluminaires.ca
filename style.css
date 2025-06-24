@@ -3,16 +3,16 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    background-color: #2F4F4F; /* Deep Muted Teal/Forest Green */
+    color: #FFFFFF; /* White text for general body content for readability */
 }
 
 header {
-    background: #35424a;
-    color: #ffffff;
+    background: #2A5B5A; /* Slightly lighter teal for header differentiation */
+    color: #FFD700; /* Gold */
     padding: 1rem 20px; /* Added padding for logo spacing */
     text-align: center;
-    border-bottom: #e8491d 3px solid;
+    border-bottom: #FFD700 3px solid; /* Gold */
     display: flex; /* For logo alignment */
     align-items: center; /* Vertically align items */
     justify-content: space-between; /* Space out logo, title/subtitle, lang-switcher */
@@ -31,10 +31,12 @@ header {
 header h1 {
     margin: 0;
     font-size: 2.5rem;
+    color: #FFD700; /* Gold */
 }
 
 header p {
     font-size: 1.1rem;
+    color: #FFFFFF; /* White for subtitle for differentiation */
 }
 
 .language-switcher {
@@ -43,9 +45,9 @@ header p {
 }
 
 .language-switcher button {
-    background: #e8491d;
-    color: #fff;
-    border: none;
+    background: #FFD700; /* Gold */
+    color: #2F4F4F; /* Dark Teal for text on gold button */
+    border: 1px solid #2F4F4F; /* Teal border */
     padding: 5px 10px;
     cursor: pointer;
     font-size: 0.9rem;
@@ -53,13 +55,14 @@ header p {
 }
 
 .language-switcher button:hover {
-    background: #35424a;
-    color: #fff;
+    background: #2F4F4F; /* Dark Teal */
+    color: #FFD700; /* Gold */
+    border: 1px solid #FFD700; /* Gold border */
 }
 
 nav {
-    background: #333;
-    color: #fff;
+    background: #2A5B5A; /* Matching header background */
+    color: #FFD700; /* Gold */
     padding: 0.5rem 0;
     text-align: center;
 }
@@ -76,13 +79,13 @@ nav ul li {
 }
 
 nav a {
-    color: #fff;
+    color: #FFD700; /* Gold */
     text-decoration: none;
     font-size: 1.1rem;
 }
 
 nav a:hover {
-    color: #e8491d;
+    color: #FFFFFF; /* White for hover */
 }
 
 main {
@@ -93,50 +96,56 @@ main {
 }
 
 section {
-    background: #fff;
+    background: #FFFFFF; /* Keep section background white for readability of content */
+    color: #333333; /* Dark grey for section text, good contrast on white */
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border: 1px solid #FFD700; /* Gold border for sections */
+    box-shadow: 0 0 10px rgba(255,215,0,0.2); /* Subtle gold shadow */
 }
 
 section h2 {
-    color: #35424a;
-    border-bottom: 2px solid #e8491d;
+    color: #2A5B5A; /* Teal for section headers */
+    border-bottom: 2px solid #FFD700; /* Gold */
     padding-bottom: 10px;
     margin-top: 0;
 }
 
 section h3 {
-    color: #35424a;
+    color: #2A5B5A; /* Teal for sub-headers */
     margin-top: 15px;
 }
 
 ul {
     list-style: disc;
     padding-left: 20px;
+    /* color will be inherited from section or body, which is #333 or #FFF respectively.
+       If sections are white background, this will be #333, which is fine. */
 }
 
 li {
     margin-bottom: 8px;
 }
 
-strong {
-    color: #333;
+strong { /* For inline strong elements, gold might be too much, use a contrasting dark color */
+    color: #2A5B5A; /* Teal, or could be a darker shade of body text if needed */
 }
 
 footer {
     text-align: center;
     padding: 20px;
-    background: #35424a;
-    color: #ffffff;
+    background: #2A5B5A; /* Matching header/nav background */
+    color: #FFD700; /* Gold */
     margin-top: 20px;
+    border-top: 3px solid #FFD700; /* Gold border top for footer */
 }
 
 .language-switcher button.active {
-    background: #fff;
-    color: #e8491d;
+    background: #FFFFFF; /* White background for active button */
+    color: #2F4F4F; /* Dark Teal text */
     font-weight: bold;
+    border: 1px solid #2F4F4F;
 }
 
 /* Styles for definition lists */
@@ -147,7 +156,7 @@ dl {
 
 dt {
     font-weight: bold;
-    color: #35424a;
+    color: #2A5B5A; /* Teal for definition terms, consistent with section h3 */
     margin-top: 10px;
 }
 
@@ -155,7 +164,7 @@ dd {
     margin-left: 20px;
     margin-bottom: 10px;
     padding-left: 10px;
-    border-left: 3px solid #e8491d;
+    border-left: 3px solid #FFD700; /* Gold border for definition descriptions */
 }
 
 #image-gallery img {
