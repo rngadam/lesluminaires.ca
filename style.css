@@ -31,7 +31,7 @@ header {
 header h1 {
     margin: 0;
     font-size: 2.5rem;
-    color: #FFD700; /* Gold */
+    /* color: #FFD700; /* Gold */ /* Removed, inherits from header */
 }
 
 header p {
@@ -79,7 +79,7 @@ nav ul li {
 }
 
 nav a {
-    color: #FFD700; /* Gold */
+    /* color: #FFD700; /* Gold */ /* Removed, inherits from nav */
     text-decoration: none;
     font-size: 1.1rem;
 }
