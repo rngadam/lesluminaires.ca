@@ -16,7 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const translation = el.getAttribute(`data-lang-${lang}`);
             if (translation) {
-                el.innerHTML = translation; // Use innerHTML to render potential <strong> tags from attributes
+                if (el.tagName === 'IMG') {
+                    el.alt = translation;
+                } else {
+                    el.innerHTML = translation; // Use innerHTML to render potential <strong> tags from attributes
+                }
             }
 
             if (preserveLink && href && target) {
