@@ -1,0 +1,167 @@
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: #e8491d 3px solid;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+header p {
+    font-size: 1.1rem;
+}
+
+.language-switcher {
+    text-align: right;
+    padding: 0 20px 10px 0;
+}
+
+.language-switcher button {
+    background: #e8491d;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-left: 5px;
+}
+
+.language-switcher button:hover {
+    background: #35424a;
+    color: #fff;
+}
+
+nav {
+    background: #333;
+    color: #fff;
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+nav ul {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+nav a:hover {
+    color: #e8491d;
+}
+
+main {
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+section {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+section h2 {
+    color: #35424a;
+    border-bottom: 2px solid #e8491d;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+section h3 {
+    color: #35424a;
+    margin-top: 15px;
+}
+
+ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+strong {
+    color: #333;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #35424a;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+.language-switcher button.active {
+    background: #fff;
+    color: #e8491d;
+    font-weight: bold;
+}
+
+/* Styles for definition lists */
+dl {
+    padding: 0;
+    margin: 10px 0;
+}
+
+dt {
+    font-weight: bold;
+    color: #35424a;
+    margin-top: 10px;
+}
+
+dd {
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+    border-left: 3px solid #e8491d;
+}
+
+
+/* Responsive Design */
+@media(max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    section {
+        padding: 15px;
+    }
+}
